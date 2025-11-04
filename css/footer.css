@@ -1,0 +1,128 @@
+/* ===== ПОДВАЛ (FOOTER) ===== */
+
+.footer {
+    background: #2b3d51;
+    width: 100%;
+    min-height: 150px;
+    display: flex;
+    align-items: flex-end;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+}
+
+.footer-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+}
+
+.footer-top {
+    background: #f4f6f9;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 2px 7px rgba(37, 49, 63, 0.04);
+    padding: 0;
+    cursor: pointer;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-center {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+}
+
+.footer-mail {
+    color: #fff;
+    font-size: 22px;
+    margin-bottom: 13px;
+}
+
+.footer-label {
+    font-size: 15px;
+    color: #fff;
+    opacity: 0.8;
+    margin-bottom: 2px;
+}
+
+.footer-phone a {
+    color: #fff;
+    font-size: 24px;
+    text-decoration: none;
+    letter-spacing: 2.5px;
+}
+
+.footer-right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 22px;
+}
+
+.footer-social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    box-shadow: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    transition: background 0.18s;
+}
+
+.footer-social:hover {
+    background: #f4f6f9;
+}
+
+@media (max-width: 900px) {
+    .footer-phone {
+        font-size: 18px;
+    }
+
+    .footer-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 22px;
+        padding: 34px 18px;
+    }
+
+    .footer-center {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .footer-center img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .footer-phone a {
+        font-size: 20px;
+        letter-spacing: 1px;
+    }
+
+    .footer-mail {
+        font-size: 18px;
+    }
+}

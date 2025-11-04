@@ -1,0 +1,177 @@
+/* ===== ФОРМЫ ОБРАТНОЙ СВЯЗИ ===== */
+
+/* Модальное окно */
+.feedback-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    backdrop-filter: blur(4px);
+}
+
+.feedback-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.feedback-modal-content {
+    background: rgba(255, 255, 255, 0.105);
+    border-radius: 16px;
+    padding: 40px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    position: relative;
+    transform: scale(0.8) translateY(50px);
+    transition: transform 0.3s ease;
+}
+
+.feedback-modal.show .feedback-modal-content {
+    transform: scale(1) translateY(0);
+}
+
+.feedback-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 28px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    z-index: 1;
+}
+
+.feedback-close:hover {
+    transform: scale(1.2);
+    color: #ff6b6b;
+}
+
+.feedback-title {
+    color: white;
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Стили формы */
+.feedback-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.feedback-form .form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.feedback-form .form-group {
+    flex: 1;
+    position: relative;
+}
+
+.feedback-form .form-input {
+    width: 100%;
+    padding: 15px 18px;
+    border: 2px solid #e2e5ea;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    background: #fff;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.feedback-form .form-input:focus {
+    outline: none;
+    border-color: #374355;
+    box-shadow: 0 0 0 3px rgba(55, 67, 85, 0.1);
+}
+
+.feedback-form .form-input::placeholder {
+    color: #8a8a8a;
+}
+
+.feedback-form .form-textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.feedback-form .form-submit {
+    background: #fff;
+    color: #374355;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    min-width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feedback-form .form-submit:hover {
+    background: #222c38;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(37, 49, 63, 0.25);
+}
+
+.feedback-form .form-submit:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .feedback-modal-content {
+        padding: 25px;
+        margin: 20px;
+    }
+
+    .feedback-title {
+        font-size: 22px;
+    }
+
+    .feedback-form .form-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .feedback-form .form-input {
+        font-size: 14px;
+        padding: 12px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .feedback-title {
+        font-size: 20px;
+    }
+
+    .feedback-form .form-input {
+        font-size: 13px;
+        padding: 10px 12px;
+    }
+}

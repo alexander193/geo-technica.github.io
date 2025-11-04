@@ -1,0 +1,192 @@
+/* ===== ГЛАВНАЯ СТРАНИЦА (ВИДЕО СЕКЦИЯ) ===== */
+
+.hero-video-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 60px;
+}
+
+.hero-video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 2;
+}
+
+.hero-left-content {
+    position: relative;
+    z-index: 3;
+    flex: 1;
+    max-width: 600px;
+    animation: fadeInLeft 0.8s ease-out;
+}
+
+.hero-title {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: white;
+    margin: 0;
+    padding: 0;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    letter-spacing: -0.5px;
+}
+
+.hero-right-content {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 0 0 auto;
+    animation: fadeInRight 0.8s ease-out 0.2s backwards;
+}
+
+.hero-btn {
+    padding: 16px 48px;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.hero-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.hero-btn:active {
+    transform: scale(0.98);
+}
+
+.hero-btn-primary {
+    background-color: #1e3a8a;
+    color: white;
+}
+
+.hero-btn-primary:hover {
+    background-color: #1e40af;
+    box-shadow: 0 8px 20px rgba(30, 58, 138, 0.4);
+}
+
+.hero-btn-secondary {
+    background-color: #f97316;
+    color: white;
+}
+
+.hero-btn-secondary:hover {
+    background-color: #ea580c;
+    box-shadow: 0 8px 20px rgba(249, 115, 22, 0.4);
+}
+
+/* Анимации */
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+    .hero-video-section {
+        padding: 0 40px;
+        gap: 40px;
+    }
+
+    .hero-title {
+        font-size: 42px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-video-section {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-end;
+        padding: 40px 20px 60px;
+        height: 70vh;
+    }
+
+    .hero-left-content {
+        width: 100%;
+        max-width: none;
+    }
+
+    .hero-title {
+        font-size: 32px;
+        line-height: 1.4;
+    }
+
+    .hero-right-content {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .hero-btn {
+        flex: 1;
+        min-width: 160px;
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-video-section {
+        padding: 30px 15px 50px;
+    }
+
+    .hero-right-content {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .hero-btn {
+        width: 100%;
+    }
+
+    .hero-title {
+        font-size: 24px;
+    }
+}
