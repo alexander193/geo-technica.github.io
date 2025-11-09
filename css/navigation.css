@@ -1,4 +1,5 @@
-/* Обновленное меню с двумя строками */
+/* ===== ОБНОВЛЕННОЕ МЕНЮ ===== */
+
 .top-nav-menu {
     position: fixed;
     top: 0;
@@ -17,6 +18,7 @@
     display: flex;
     align-items: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(30, 41, 59, 0.95); /* одинаковый фон */
 }
 
 .nav-container {
@@ -30,7 +32,7 @@
     width: 100%;
 }
 
-/* Логотип */
+/* Логотип - выравнивание по центру двух строк */
 .nav-logo-fullheight {
     height: 100%;
     display: flex;
@@ -52,13 +54,13 @@
     height: 100%;
 }
 
-/* Навигация по центру */
+/* Навигация - увеличенные отступы */
 .nav-links {
     list-style: none;
     display: flex;
     margin: 0;
     padding: 0;
-    gap: 40px;
+    gap: 50px; /* увеличен с 40px */
     justify-content: center;
     height: 100%;
     align-items: center;
@@ -100,31 +102,20 @@
     width: 100%;
 }
 
-.nav-link-item.active {
-    opacity: 1;
-    color: #fff;
-    pointer-events: none;
-    cursor: default;
-}
-
-.nav-link-item.active::after {
-    width: 100%;
-    background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
-}
-
 /* Нижняя строка с контактами */
 .nav-bottom-row {
     height: 50px;
     display: flex;
     align-items: center;
-    background: rgba(30, 41, 59, 0.95);
+    background: rgba(30, 41, 59, 0.95); /* одинаковый фон */
 }
 
 .contacts-bottom {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end; /* прижато к правому краю */
     align-items: center;
     width: 100%;
+    gap: 40px; /* равномерные отступы */
 }
 
 .contact-items {
@@ -173,31 +164,28 @@
     transform: translateY(-1px);
 }
 
-.social-link-bottom svg {
-    width: 16px;
-    height: 16px;
-}
-
-/* Бургер меню */
+/* Бургер меню - исправленная анимация */
 .nav-burger {
     display: none;
     flex-direction: column;
     background: none;
     border: none;
     cursor: pointer;
-    gap: 6px;
-    padding: 0;
+    gap: 4px;
+    padding: 4px;
     width: 30px;
     height: 30px;
     justify-content: center;
+    align-items: center;
 }
 
 .nav-burger span {
-    width: 100%;
+    width: 20px;
     height: 2px;
     background: #fff;
     transition: all 0.3s ease;
     border-radius: 2px;
+    transform-origin: center;
 }
 
 .nav-burger.active span:nth-child(1) {
@@ -206,6 +194,7 @@
 
 .nav-burger.active span:nth-child(2) {
     opacity: 0;
+    transform: translateX(-10px);
 }
 
 .nav-burger.active span:nth-child(3) {
@@ -220,39 +209,21 @@
     }
     
     .nav-links {
+        gap: 35px;
+    }
+    
+    .contacts-bottom {
         gap: 30px;
-    }
-    
-    .contact-items {
-        gap: 25px;
-    }
-    
-    .company-name-full {
-        font-size: 22px;
     }
 }
 
 @media (max-width: 1024px) {
     .nav-links {
+        gap: 30px;
+    }
+    
+    .contacts-bottom {
         gap: 25px;
-    }
-    
-    .nav-link-item {
-        font-size: 15px;
-    }
-    
-    .contact-phone,
-    .contact-email {
-        font-size: 13px;
-    }
-    
-    .social-links-bottom {
-        gap: 15px;
-    }
-    
-    .social-link-bottom {
-        font-size: 13px;
-        padding: 5px 10px;
     }
 }
 
@@ -276,7 +247,7 @@
     
     .nav-links {
         position: fixed;
-        top: 115px; /* 60px (верх) + 45px (низ) + 10px отступ */
+        top: 115px;
         left: 0;
         width: 100%;
         max-height: 0;
@@ -304,6 +275,7 @@
         display: block;
         padding: 15px 30px;
         height: auto;
+        text-align: center;
     }
     
     .nav-link-item::after {
@@ -314,26 +286,12 @@
         flex-direction: column;
         gap: 10px;
         padding: 10px 0;
+        justify-content: center;
     }
     
-    .company-name-full {
-        font-size: 20px;
-    }
-}
-
-@media (max-width: 768px) {
     .contact-items {
         flex-direction: column;
         gap: 8px;
-    }
-    
-    .social-links-bottom {
-        gap: 10px;
-    }
-    
-    .social-link-bottom {
-        font-size: 12px;
-        padding: 4px 8px;
     }
 }
 
@@ -351,40 +309,6 @@
     }
     
     .nav-links {
-        top: 95px; /* 55px (верх) + 40px (низ) */
-    }
-    
-    .nav-link-item {
-        padding: 12px 20px;
-        font-size: 14px;
-    }
-    
-    .company-name-full {
-        font-size: 18px;
-    }
-}
-
-@media (max-width: 480px) {
-    .company-name-full {
-        font-size: 16px;
-    }
-    
-    .nav-burger {
-        width: 25px;
-        height: 25px;
-    }
-    
-    .contact-phone,
-    .contact-email {
-        font-size: 12px;
-    }
-    
-    .social-link-bottom {
-        font-size: 11px;
-    }
-    
-    .social-link-bottom svg {
-        width: 14px;
-        height: 14px;
+        top: 95px;
     }
 }

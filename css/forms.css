@@ -117,3 +117,42 @@
         padding: 30px;
     }
 }
+
+
+/* ===== ИСПРАВЛЕНИЯ ДЛЯ ФОРМЫ ===== */
+
+/* Скрываем преимущества (3 прямоугольника) */
+.contact-form-advantages,
+.form-advantages,
+.advantages-block,
+.form-advantages-row,
+.advantages-section {
+    display: none !important;
+}
+
+/* Упрощаем файлы - только прямоугольник */
+.file-upload-text,
+.file-upload-description,
+.upload-subtitle,
+.upload-hint-text {
+    display: none !important;
+}
+
+.file-label {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    border: 2px dashed #cbd5e1;
+    border-radius: 12px;
+    background: #f8fafc;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.file-label:hover {
+    border-color: #3b82f6;
+    background: #eff6ff;
+}

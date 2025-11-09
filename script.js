@@ -1,307 +1,114 @@
 document.addEventListener('DOMContentLoaded', () => {
-            const form = document.getElementById('contactForm');
-            const multiInput = document.getElementById('file-upload');
+    const form = document.getElementById('contactForm');
+    const multiInput = document.getElementById('file-upload');
 
-            form.addEventListener('submit', e => {
-                e.preventDefault();
+    if (form && multiInput) {
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            const fd = new FormData(form);
+            Array.from(multiInput.files).forEach((file, idx) => {
+                const field = idx === 0 ? 'file' : idx === 1 ? 'file2' : 'file' + (idx + 1);
+                fd.set(field, file);
+            });
+            fd.delete('files');
 
-                const fd = new FormData(form);
-                Array.from(multiInput.files).forEach((file, idx) => {
-                    const field = idx === 0 ? 'file' :
-                        idx === 1 ? 'file2' :
-                            'file' + (idx + 1);
-                    fd.set(field, file);
-                });
-                // убираем поле multiple, если нужно
-                fd.delete('files');
-
-                fetch(form.action, {
-                    method: form.method,
-                    body: fd,
-                    credentials: 'include'
-                })
-                    .then(response => {
-                        if (!response.ok) throw new Error();
-                        return response.text();
-                    })
-                    .then(() => {
-                        showSuccessMessage();
-                        form.reset();
-                        multiInput.value = '';
-
-                        document.getElementById('file-list').innerHTML = '';
-                        document.getElementById('file-count').style.display = 'none';
-                    })
-                    .catch(() => {
-                        alert('Ошибка отправки. Попробуйте позже.');
-                    });
+            fetch(form.action, {
+                method: form.method,
+                body: fd,
+                credentials: 'include'
+            })
+            .then(response => {
+                if (!response.ok) throw new Error();
+                return response.text();
+            })
+            .then(() => {
+                showSuccessMessage();
+                form.reset();
+                multiInput.value = '';
+                document.getElementById('file-list').innerHTML = '';
+                document.getElementById('file-count').style.display = 'none';
+            })
+            .catch(() => {
+                alert('Ошибка отправки. Попробуйте позже.');
             });
         });
+    }
+});
 
-        // функция показа оверлея в том же виде, что у вас раньше
-        function showSuccessMessage() {
-            const successHTML = `
-   <div class="success-message" id="successMessage">
-    <div class="success-content">
-      <div class="success-icon">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M9 12L11 14L15 10M21 12C21 16.97 16.97 21 12 21C7.03 21 3 16.97 3 12C3 7.03 7.03 3 12 3C16.97 3 21 7.03 21 12Z"
-                stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-      <h3>Заявка успешно отправлена!</h3>
-      <p>Спасибо за обращение. Мы свяжемся с вами в ближайшее время.</p>
-      <button class="success-close" onclick="hideSuccessMessage()">Хорошо</button>
-    </div>
-  </div>`;
-            document.body.insertAdjacentHTML('beforeend', successHTML);
-        }
+function showSuccessMessage() {
+    const successHTML = `
+        <div id="successMessage" class="success-message" onclick="hideSuccessMessage()">
+            <div class="success-content">
+                <h3>Спасибо!</h3>
+                <p>Ваше сообщение успешно отправлено</p>
+            </div>
+        </div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', successHTML);
+}
 
-        function hideSuccessMessage() {
-            const el = document.getElementById('successMessage');
-            if (el) el.remove();
-        }
+function hideSuccessMessage() {
+    const el = document.getElementById('successMessage');
+    if (el) el.remove();
+}
 
+// Валидация полей ввода
 document.addEventListener('DOMContentLoaded', function () {
-            const feedbackBtn = document.getElementById('feedbackBtn');
-            const feedbackModal = document.getElementById('feedbackModal');
-            const feedbackClose = document.getElementById('feedbackClose');
-            const feedbackForm = document.getElementById('feedbackForm');
-            const feedbackIframe = document.getElementById('feedback_iframe');
+    document.querySelectorAll('.contact-form [required]').forEach(input => {
+        const errorEl = document.getElementById('error-' + input.name);
+        input.addEventListener('input', () => {
+            input.classList.remove('input-invalid');
+            if (errorEl) errorEl.style.display = 'none';
+        });
+        input.addEventListener('invalid', e => {
+            e.preventDefault();
+            input.classList.add('input-invalid');
+            if (errorEl) errorEl.style.display = 'block';
+        });
+    });
 
-            // Открытие модального окна с анимацией
-            feedbackBtn.addEventListener('click', function () {
-                feedbackModal.classList.add('show');
-                document.body.style.overflow = 'hidden'; // Блокируем скролл
-            });
+    const checkbox = document.getElementById('agreement');
+    if (checkbox) {
+        const errorCheckbox = document.getElementById('error-f_Agreement');
+        checkbox.addEventListener('change', () => {
+            checkbox.classList.remove('input-invalid-checkbox');
+            if (errorCheckbox) errorCheckbox.style.display = 'none';
+        });
+        checkbox.addEventListener('invalid', e => {
+            e.preventDefault();
+            checkbox.classList.add('input-invalid-checkbox');
+            if (errorCheckbox) errorCheckbox.style.display = 'block';
+        });
+    }
 
-            // Закрытие модального окна
-            function closeFeedbackModal() {
-                feedbackModal.classList.remove('show');
-                document.body.style.overflow = ''; // Возвращаем скролл
-                // Очищаем форму
-                feedbackForm.reset();
-                clearFeedbackFileDisplay();
-                clearFeedbackValidation();
-            }
+    // Обработка загрузки файлов
+    const fileInput = document.getElementById('file-upload');
+    if (fileInput) {
+        const fileLabel = document.querySelector('.file-label');
+        const fileCount = document.getElementById('file-count');
+        const countSpan = document.getElementById('count');
+        const fileList = document.getElementById('file-list');
 
-            feedbackClose.addEventListener('click', closeFeedbackModal);
-
-            // Закрытие по клику на фон
-            feedbackModal.addEventListener('click', function (e) {
-                if (e.target === feedbackModal) {
-                    closeFeedbackModal();
-                }
-            });
-
-            // Закрытие по ESC
-            document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape' && feedbackModal.classList.contains('show')) {
-                    closeFeedbackModal();
-                }
-            });
-
-            // Валидация полей формы в модальном окне
-            document.querySelectorAll('.feedback-form [required]').forEach(input => {
-                const fieldName = input.name;
-                const errorEl = document.getElementById('feedback-error-' + fieldName);
-
-                input.addEventListener('input', () => {
-                    input.classList.remove('input-invalid');
-                    if (errorEl) errorEl.style.display = 'none';
-                });
-
-                input.addEventListener('invalid', e => {
-                    e.preventDefault();
-                    input.classList.add('input-invalid');
-                    if (errorEl) errorEl.style.display = 'block';
-                });
-            });
-
-            function clearFeedbackValidation() {
-                document.querySelectorAll('.feedback-form .input-invalid').forEach(el => {
-                    el.classList.remove('input-invalid');
-                });
-                document.querySelectorAll('.feedback-form .error-text').forEach(el => {
-                    el.style.display = 'none';
-                });
-            }
-
-            // Обработка файлов в модальном окне
-            const feedbackFileInput = document.getElementById('feedback-file-upload');
-            const feedbackFileLabel = feedbackFileInput.nextElementSibling;
-            const feedbackFileCount = document.getElementById('feedback-file-count');
-            const feedbackCountSpan = document.getElementById('feedback-count');
-            const feedbackFileList = document.getElementById('feedback-file-list');
-
-            feedbackFileInput.addEventListener('change', function (e) {
-                const files = Array.from(e.target.files);
-                updateFeedbackFileDisplay(files);
-            });
-
-            function updateFeedbackFileDisplay(files) {
-                if (files.length === 0) {
-                    feedbackFileLabel.classList.remove('has-files');
-                    feedbackFileCount.style.display = 'none';
-                    feedbackFileList.innerHTML = '';
-                    return;
-                }
-
-                feedbackFileLabel.classList.add('has-files');
-                feedbackFileCount.style.display = 'block';
-                feedbackCountSpan.textContent = files.length;
-
-                feedbackFileList.innerHTML = '';
-                files.forEach((file, index) => {
-                    const li = document.createElement('li');
-                    li.className = 'file-item';
-
-                    const fileName = document.createElement('span');
-                    fileName.className = 'file-name';
-                    fileName.textContent = file.name;
-
-                    const fileSize = document.createElement('span');
-                    fileSize.className = 'file-size';
-                    fileSize.textContent = formatFileSize(file.size);
-
-                    const removeBtn = document.createElement('button');
-                    removeBtn.className = 'file-remove';
-                    removeBtn.textContent = '×';
-                    removeBtn.type = 'button';
-                    removeBtn.onclick = () => removeFeedbackFile(index);
-
-                    li.appendChild(fileName);
-                    li.appendChild(fileSize);
-                    li.appendChild(removeBtn);
-                    feedbackFileList.appendChild(li);
-                });
-            }
-
-            function removeFeedbackFile(index) {
-                const dt = new DataTransfer();
-                const files = Array.from(feedbackFileInput.files);
-
-                files.forEach((file, i) => {
-                    if (i !== index) {
-                        dt.items.add(file);
-                    }
-                });
-
-                feedbackFileInput.files = dt.files;
-                updateFeedbackFileDisplay(Array.from(dt.files));
-            }
-
-            function clearFeedbackFileDisplay() {
-                feedbackFileLabel.classList.remove('has-files');
-                feedbackFileCount.style.display = 'none';
-                feedbackFileList.innerHTML = '';
-            }
-
-            function formatFileSize(bytes) {
-                if (bytes === 0) return '0 Bytes';
-                const k = 1024;
-                const sizes = ['Bytes', 'KB', 'MB', 'GB'];
-                const i = Math.floor(Math.log(bytes) / Math.log(k));
-                return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
-            }
-
-            // Отправка формы в модальном окне
-            feedbackForm.addEventListener('submit', function (e) {
-                e.preventDefault();
-
-                const formData = new FormData(feedbackForm);
-                const files = Array.from(feedbackFileInput.files);
-
-                // Преобразуем файлы в нужный формат
-                files.forEach((file, idx) => {
-                    const fieldName = idx === 0 ? 'file' :
-                        idx === 1 ? 'file2' :
-                            'file' + (idx + 1);
-                    formData.set(fieldName, file);
-                });
-                formData.delete('files');
-
-                // Отправляем через fetch
-                fetch(feedbackForm.action, {
-                    method: feedbackForm.method,
-                    body: formData,
-                    credentials: 'include'
-                })
-                    .then(response => {
-                        if (!response.ok) throw new Error('Network response was not ok');
-                        return response.text();
-                    })
-                    .then(() => {
-                        closeFeedbackModal();
-                        showSuccessMessage();
-                    })
-                    .catch(() => {
-                        alert('Ошибка отправки. Попробуйте позже.');
-                    });
-            });
+        fileInput.addEventListener('change', function (e) {
+            const files = Array.from(e.target.files);
+            updateFileDisplay(files);
         });
 
-document.addEventListener('DOMContentLoaded', function () {
-            // Определяем, мобильное ли устройство
-            function isMobile() {
-                return window.innerWidth <= 1408;
+        function updateFileDisplay(files) {
+            if (files.length === 0) {
+                if (fileLabel) fileLabel.classList.remove('has-files');
+                if (fileCount) fileCount.style.display = 'none';
+                if (fileList) fileList.innerHTML = '';
+                return;
             }
 
-            // Валидация полей ввода
-            document.querySelectorAll('.contact-form [required]').forEach(input => {
-                const errorEl = document.getElementById('error-' + input.name);
-
-                input.addEventListener('input', () => {
-                    input.classList.remove('input-invalid');
-                    if (errorEl) errorEl.style.display = 'none';
-                });
-
-                input.addEventListener('invalid', e => {
-                    e.preventDefault();
-                    input.classList.add('input-invalid');
-                    if (errorEl) errorEl.style.display = 'block';
-                });
-            });
-
-            // Валидация чекбокса
-            const checkbox = document.getElementById('agreement');
-            const errorCheckbox = document.getElementById('error-f_Agreement');
-
-            checkbox.addEventListener('change', () => {
-                checkbox.classList.remove('input-invalid-checkbox');
-                if (errorCheckbox) errorCheckbox.style.display = 'none';
-            });
-
-            checkbox.addEventListener('invalid', e => {
-                e.preventDefault();
-                checkbox.classList.add('input-invalid-checkbox');
-                if (errorCheckbox) errorCheckbox.style.display = 'block';
-            });
-
-            // Обработка загрузки файлов
-            const fileInput = document.getElementById('file-upload');
-            const fileLabel = document.querySelector('.file-label');
-            const fileCount = document.getElementById('file-count');
-            const countSpan = document.getElementById('count');
-            const fileList = document.getElementById('file-list');
-
-            fileInput.addEventListener('change', function (e) {
-                const files = Array.from(e.target.files);
-                updateFileDisplay(files);
-            });
-
-            function updateFileDisplay(files) {
-                if (files.length === 0) {
-                    fileLabel.classList.remove('has-files');
-                    fileCount.style.display = 'none';
-                    fileList.innerHTML = '';
-                    return;
-                }
-
-                fileLabel.classList.add('has-files');
+            if (fileLabel) fileLabel.classList.add('has-files');
+            if (fileCount) {
                 fileCount.style.display = 'block';
-                countSpan.textContent = files.length;
+                if (countSpan) countSpan.textContent = files.length;
+            }
 
+            if (fileList) {
                 fileList.innerHTML = '';
                 files.forEach((file, index) => {
                     const li = document.createElement('li');
@@ -327,353 +134,247 @@ document.addEventListener('DOMContentLoaded', function () {
                     fileList.appendChild(li);
                 });
             }
+        }
 
-            function formatFileSize(bytes) {
-                if (bytes === 0) return '0 Bytes';
-                const k = 1024;
-                const sizes = ['Bytes', 'KB', 'MB', 'GB'];
-                const i = Math.floor(Math.log(bytes) / Math.log(k));
-                return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
-            }
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
 
-            function removeFile(index) {
-                const dt = new DataTransfer();
-                const files = Array.from(fileInput.files);
-
-                files.forEach((file, i) => {
-                    if (i !== index) {
-                        dt.items.add(file);
-                    }
-                });
-
-                fileInput.files = dt.files;
-                updateFileDisplay(Array.from(dt.files));
-            }
-
-            // Обработка клика по услугам
-            const serviceCards = document.querySelectorAll('.service-card');
-            const serviceDescriptions = document.querySelectorAll('.service-description');
-
-            serviceCards.forEach(card => {
-                card.addEventListener('click', function () {
-                    const serviceId = this.getAttribute('data-service');
-
-                    if (isMobile()) {
-                        // Мобильная логика
-                        const mobileDescription = document.getElementById('mobile-' + 'description-' + serviceId);
-                        const isActive = this.classList.contains('active');
-
-                        // Закрываем все мобильные описания и убираем активный класс со всех карточек
-                        serviceCards.forEach(c => {
-                            c.classList.remove('active');
-                            const mobileDesc = c.querySelector('.mobile-service-description');
-                            if (mobileDesc) {
-                                mobileDesc.style.display = 'none';
-                            }
-                        });
-
-                        // Если карточка не была активна, открываем соответствующее описание
-                        if (!isActive && mobileDescription) {
-                            this.classList.add('active');
-                            mobileDescription.style.display = 'block';
-                            const img = this.querySelector('img');
-                            if (img) {
-                                img.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            }
-                        }
-                    } else {
-                        // Десктопная логика
-                        const targetDescription = document.getElementById('description-' + serviceId);
-                        const isActive = this.classList.contains('active');
-
-                        // Закрываем все описания и убираем активный класс со всех карточек
-                        serviceCards.forEach(c => c.classList.remove('active'));
-                        serviceDescriptions.forEach(desc => desc.classList.remove('active'));
-
-                        // Если карточка не была активна, открываем соответствующее описание
-                        if (!isActive && targetDescription) {
-                            this.classList.add('active');
-                            targetDescription.classList.add('active');
-                            // Плавная прокрутка к картинке услуги
-                            const img = this.querySelector('img');
-                            if (img) {
-                                img.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            }
-                        }
-                    }
-                });
+        function removeFile(index) {
+            const dt = new DataTransfer();
+            const files = Array.from(fileInput.files);
+            files.forEach((file, i) => {
+                if (i !== index) {
+                    dt.items.add(file);
+                }
             });
+            fileInput.files = dt.files;
+            updateFileDisplay(Array.from(dt.files));
+        }
+    }
+});
 
-            // Обработка изменения размера окна
-            // Отслеживание размеров для определения реального изменения размера
-            let previousWidth = window.innerWidth;
-            let resizeTimeout;
-
-            // Обработка изменения размера окна с задержкой
-            window.addEventListener('resize', function () {
-                clearTimeout(resizeTimeout);
-
-                resizeTimeout = setTimeout(() => {
-                    const currentWidth = window.innerWidth;
-
-                    // Закрываем описания только если изменилась ширина экрана (поворот устройства)
-                    // а не при скролле, который меняет только высоту
-                    if (Math.abs(currentWidth - previousWidth) > 50) {
-                        // Закрываем все активные описания при значительном изменении ширины
-                        serviceCards.forEach(c => {
-                            c.classList.remove('active');
-                            const mobileDesc = c.querySelector('.mobile-service-description');
-                            if (mobileDesc) {
-                                mobileDesc.style.display = 'none';
-                            }
-                        });
-                        serviceDescriptions.forEach(desc => desc.classList.remove('active'));
-
-                        // Обновляем сохраненную ширину
-                        previousWidth = currentWidth;
-                    }
-                }, 200); // 200ms задержка чтобы избежать множественных срабатываний
-            });
-
-        });
-
+// Кнопка скролла наверх
 (function () {
-            var btn = document.getElementById('scrollTop2');
+    const btn = document.getElementById('scrollTop2');
+    if (!btn) return;
 
-            function updateScrollButton() {
-                if (window.pageYOffset > 200) {
-                    btn.classList.add('show');
-                } else {
-                    btn.classList.remove('show');
-                }
-            }
+    function updateScrollButton() {
+        if (window.pageYOffset > 200) {
+            btn.classList.add('show');
+        } else {
+            btn.classList.remove('show');
+        }
+    }
 
-            let ticking = false;
-            window.addEventListener('scroll', function () {
-                if (!ticking) {
-                    requestAnimationFrame(function () {
-                        updateScrollButton();
-                        ticking = false;
-                    });
-                    ticking = true;
-                }
+    let ticking = false;
+    window.addEventListener('scroll', function () {
+        if (!ticking) {
+            requestAnimationFrame(function () {
+                updateScrollButton();
+                ticking = false;
             });
+            ticking = true;
+        }
+    });
 
-            btn.addEventListener('click', function (e) {
+    btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+})();
+
+// Плавная прокрутка для внутренних ссылок
+document.addEventListener('DOMContentLoaded', function () {
+    function smoothScrollTo(target) {
+        const element = document.querySelector(target);
+        if (element) {
+            const offsetTop = element.offsetTop - 120;
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href');
+            if (targetId && targetId !== '#') {
                 e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-
-            // Улучшенная плавная прокрутка для внутренних ссылок
-            function smoothScrollTo(target) {
-                const element = document.querySelector(target);
-                if (element) {
-                    const offsetTop = element.offsetTop - 20; // отступ 20px сверху
-                    window.scrollTo({
-                        top: offsetTop,
-                        behavior: 'smooth'
-                    });
-                }
+                smoothScrollTo(targetId);
             }
+        });
+    });
+});
 
-            // Ждем полной загрузки DOM
-            document.addEventListener('DOMContentLoaded', function () {
-                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                    anchor.addEventListener('click', function (e) {
-                        e.preventDefault();
-                        const targetId = this.getAttribute('href');
-                        if (targetId && targetId !== '#') {
-                            smoothScrollTo(targetId);
-                        }
-                    });
-                });
-            });
-
-            // Дополнительная проверка для случая, если DOM уже загружен
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', initSmoothScroll);
-            } else {
-                initSmoothScroll();
-            }
-
-            function initSmoothScroll() {
-                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                    anchor.addEventListener('click', function (e) {
-                        e.preventDefault();
-                        const targetId = this.getAttribute('href');
-                        if (targetId && targetId !== '#') {
-                            smoothScrollTo(targetId);
-                        }
-                    });
-                });
-            }
-        })();
-
+// ===== ИСПРАВЛЕННОЕ БУРГЕР-МЕНЮ =====
 document.addEventListener('DOMContentLoaded', function() {
-    const navBurger = document.getElementById('navBurger');
-    const navLinks = document.getElementById('navLinks');
-    
+    const navBurger = document.querySelector('.nav-burger');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (!navBurger || !navLinks) {
+        console.warn('Бургер-меню или nav-links не найдены');
+        return;
+    }
+
     // Открытие/закрытие меню
-    navBurger.addEventListener('click', function() {
+    navBurger.addEventListener('click', function(e) {
+        e.stopPropagation(); // Предотвращаем всплытие события
         navBurger.classList.toggle('active');
         navLinks.classList.toggle('active');
+        document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
     });
-    
+
     // Закрытие меню при клике на ссылку
-    document.querySelectorAll('.nav-links a').forEach(link => {
+    document.querySelectorAll('.nav-link-item').forEach(link => {
         link.addEventListener('click', function() {
             navBurger.classList.remove('active');
             navLinks.classList.remove('active');
+            document.body.style.overflow = '';
         });
     });
-    
+
     // Закрытие меню при клике вне его
     document.addEventListener('click', function(e) {
-        if (!e.target.closest('.top-nav-menu')) {
+        // Проверяем, что клик был вне nav-container и вне бургера
+        if (!e.target.closest('.nav-container') && navLinks.classList.contains('active')) {
             navBurger.classList.remove('active');
             navLinks.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Закрытие меню при изменении размера окна
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+            if (window.innerWidth > 900) {
+                navBurger.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }, 250);
+    });
+});
+
+// Определение активной страницы в меню
+document.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelectorAll('.nav-link-item');
+    const currentPage = window.location.hash || '#home';
+
+    navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+            link.classList.add('active');
         }
     });
 });
 
-(function () {
-            var form = document.getElementById('contactForm');
-            var iframe = document.querySelector('iframe[name="hidden_iframe"]');
-
-            // Обработка отправки формы
-            form.addEventListener('submit', function () {
-                // После отправки — слушаем загрузку iframe
-                iframe.addEventListener('load', onIframeLoad);
-            });
-
-            function onIframeLoad() {
-                showSuccessMessage();
-                form.reset(); // Очистить форму
-
-                // Очищаем отображение файлов
-                document.querySelector('.file-label').classList.remove('has-files');
-                document.getElementById('file-count').style.display = 'none';
-                document.getElementById('file-list').innerHTML = '';
-
-                // Убираем слушатель, чтобы при повторной отправке не дублировать
-                iframe.removeEventListener('load', onIframeLoad);
-            }
-
-            // Функция показа сообщения об успехе
-            function showSuccessMessage() {
-                var successHTML = `
-  <div class="success-message" id="successMessage">
-    <div class="success-content">
-      <div class="success-icon">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M9 12L11 14L15 10M21 12C21 16.97 16.97 21 12 21C7.03 21 3 16.97 3 12C3 7.03 7.03 3 12 3C16.97 3 21 7.03 21 12Z"
-                stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-      <h3>Заявка успешно отправлена!</h3>
-      <p>Спасибо за обращение. Мы свяжемся с вами в ближайшее время.</p>
-      <button class="success-close" onclick="hideSuccessMessage()">Хорошо</button>
-    </div>
-  </div>
-`;
-
-                document.body.insertAdjacentHTML('beforeend', successHTML);
-            }
-
-            // Функция скрытия сообщения
-            window.hideSuccessMessage = function () {
-                var successMessage = document.getElementById('successMessage');
-                if (successMessage) {
-                    successMessage.remove();
-                }
-            };
-
-            // Скрыть сообщение при клике вне его
-            document.addEventListener('click', function (e) {
-                if (e.target.classList.contains('success-message')) {
-                    hideSuccessMessage();
-                }
-            });
-        })();
-
-        // Определение активной страницы в меню
+// ===== ИСПРАВЛЕННЫЙ СЛАЙДЕР ОТЗЫВОВ =====
 document.addEventListener('DOMContentLoaded', function() {
-  const navLinks = document.querySelectorAll('.nav-link-item');
-  const navBurger = document.querySelector('.nav-burger');
-  const navLinksMenu = document.querySelector('.nav-links');
-  
-  // Определяем текущую страницу по URL
-  const currentPage = window.location.hash || '#home';
-  
-  navLinks.forEach(link => {
-    if (link.getAttribute('href') === currentPage) {
-      link.classList.add('active');
-    } else {
-      link.classList.remove('active');
-    }
-  });
-  
-  // Бургер-меню
-  navBurger.addEventListener('click', function() {
-    navBurger.classList.toggle('active');
-    navLinksMenu.classList.toggle('active');
-  });
-  
-  // Закрытие меню при клике на ссылку
-  navLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-      // Если ссылка уже активная - не кликаем
-      if (this.classList.contains('active')) {
-        e.preventDefault();
-        navBurger.classList.remove('active');
-        navLinksMenu.classList.remove('active');
-        return;
-      }
-      
-      // Убираем active со всех ссылок
-      navLinks.forEach(l => l.classList.remove('active'));
-      
-      // Добавляем active к текущей ссылке
-      this.classList.add('active');
-      
-      // Закрываем бургер-меню
-      navBurger.classList.remove('active');
-      navLinksMenu.classList.remove('active');
-    });
-  });
-});
+    const track = document.querySelector('.slider-track-modern');
+    const slides = document.querySelectorAll('.review-slide');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    const dotsContainer = document.querySelector('.slider-dots');
 
-document.addEventListener('DOMContentLoaded', function() {
-  const navLinks = document.querySelectorAll('.nav-link-item');
-  const navBurger = document.querySelector('.nav-burger');
-  const navLinksMenu = document.querySelector('.nav-links');
-  
-  const currentPage = window.location.hash || '#home';
-  
-  navLinks.forEach(link => {
-    if (link.getAttribute('href') === currentPage) {
-      link.classList.add('active');
-    }
-  });
-  
-  navBurger.addEventListener('click', function() {
-    navBurger.classList.toggle('active');
-    navLinksMenu.classList.toggle('active');
-  });
-  
-  navLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-      if (this.classList.contains('active')) {
-        e.preventDefault();
-        navBurger.classList.remove('active');
-        navLinksMenu.classList.remove('active');
+    if (!track || !slides.length) {
+        console.warn('Слайдер отзывов не найден');
         return;
-      }
-      
-      navLinks.forEach(l => l.classList.remove('active'));
-      this.classList.add('active');
-      navBurger.classList.remove('active');
-      navLinksMenu.classList.remove('active');
+    }
+
+    let currentSlide = 0;
+    let slidesPerView = getSlidesPerView();
+
+    // Создаем точки для навигации
+    const totalDots = Math.ceil(slides.length / slidesPerView);
+    for (let i = 0; i < totalDots; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(i));
+        if (dotsContainer) dotsContainer.appendChild(dot);
+    }
+
+    const dots = document.querySelectorAll('.dot');
+
+    function getSlidesPerView() {
+        if (window.innerWidth >= 1201) return 3;
+        if (window.innerWidth >= 769) return 2;
+        return 1;
+    }
+
+    function updateSlider() {
+        slidesPerView = getSlidesPerView();
+        const slideWidth = slides[0].getBoundingClientRect().width;
+        const gap = 32;
+        const offset = currentSlide * (slideWidth + gap);
+
+        track.style.transform = `translateX(-${offset}px)`;
+
+        // Обновляем активную точку
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
+        });
+    }
+
+    function goToSlide(slideIndex) {
+        const maxSlide = Math.max(0, slides.length - slidesPerView);
+        currentSlide = Math.max(0, Math.min(slideIndex, maxSlide));
+        updateSlider();
+    }
+
+    function nextSlide() {
+        const maxSlide = Math.max(0, slides.length - slidesPerView);
+        if (currentSlide < maxSlide) {
+            currentSlide++;
+        } else {
+            currentSlide = 0;
+        }
+        updateSlider();
+    }
+
+    function prevSlide() {
+        const maxSlide = Math.max(0, slides.length - slidesPerView);
+        if (currentSlide > 0) {
+            currentSlide--;
+        } else {
+            currentSlide = maxSlide;
+        }
+        updateSlider();
+    }
+
+    // Обработчики событий
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+
+    // Адаптивность при изменении размера окна
+    let resizeTimeout;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(function() {
+            currentSlide = 0;
+            updateSlider();
+        }, 250);
     });
-  });
+
+    // Автопрокрутка
+    let autoSlide = setInterval(nextSlide, 5000);
+
+    // Останавливаем автопрокрутку при наведении
+    track.addEventListener('mouseenter', () => clearInterval(autoSlide));
+    track.addEventListener('mouseleave', () => {
+        autoSlide = setInterval(nextSlide, 5000);
+    });
+
+    // Инициализация
+    updateSlider();
 });
