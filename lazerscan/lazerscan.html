@@ -6,13 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Лазерное сканирование</title>
     <link rel="icon" href="../images/lazernoe-skanirovanie/logo_with_background.png" type="image/png">
-    <link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/navigation.css">
-<link rel="stylesheet" href="css/components.css">
-<link rel="stylesheet" href="css/footer.css">
-<link rel="stylesheet" href="css/home.css">
-</head>
-<link rel="stylesheet" href="../style.css">
+    <!-- Базовые стили -->
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/navigation.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/menu.css">
+    
+    <!-- Специфические стили страницы -->
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    
+    <!-- Главный файл стилей -->
+    <link rel="stylesheet" href="../style.css">
 </head>
 
 </style>
@@ -87,21 +92,67 @@
 
     <!-- Меню -->
     <nav class="top-nav-menu">
+  <div class="nav-container">
+    <div class="nav-logo">
+      <img src="your-logo.png" alt="Logo">
+    </div>
+    
+    <ul class="nav-links">
+      <li><a href="#home">Главная</a></li>
+      <li><a href="#services">Услуги</a></li>
+      <li><a href="#about">О нас</a></li>
+      <li><a href="#portfolio">Портфолио</a></li>
+      <li><a href="#contact">Контакты</a></li>
+    </ul>
+    
+    <button class="nav-burger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+  
+ <!-- Меню -->
+    <nav class="top-nav-menu">
         <div class="nav-container">
+            <!-- ЛОГОТИП И НАЗВАНИЕ СЛЕВА -->
             <div class="nav-logo">
+                <h2 class="company-name">ООО "ГЕОТЕХНИКА"</h2>
             </div>
-            <ul class="nav-links" id="navLinks">
-                <li><a>Компания</a></li>
-                <li><a href="/services.html">Услуги</a></li>
-                <li><a href="/projects">Проекты</a></li>
-                <li><a href="/reviews">Отзывы</a></li>
-                <li><a href="/contacts">Контакты</a></li>
+
+            <!-- МЕНЮ В ЦЕНТРЕ -->
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link-item">Главная</a></li>
+                <li><a href="#services" class="nav-link-item">Услуги</a></li>
+                <li><a href="#about" class="nav-link-item">О нас</a></li>
+                <li><a href="#portfolio" class="nav-link-item">Портфолио</a></li>
+                <li><a href="#contact" class="nav-link-item">Контакты</a></li>
             </ul>
-            <button class="nav-burger" id="navBurger" aria-label="Меню">
+
+            <!-- БУРГЕР МЕНЮ -->
+            <button class="nav-burger">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
+        </div>
+
+        <!-- КОНТАКТЫ И СОЦИАЛЬНЫЕ СЕТИ -->
+        <div class="nav-contacts">
+            <div class="contacts-wrapper">
+                <a href="tel:+74993222529" class="contact-item">+7 (499) 322-25-29</a>
+                <a href="mailto:info@geo-technica.ru" class="contact-item">info@geo-technica.ru</a>
+
+                <div class="social-links">
+                    <a href="https://wa.me/74993222529" target="_blank" class="social-icon" title="WhatsApp">
+                        <img src="../images/WhatsApp.webp" alt="WhatsApp">
+                    </a>
+
+                    <a href="https://t.me/yourusername" target="_blank" class="social-icon" title="Telegram">
+                        <img src="../images/telegram.webp" alt="Telegram">
+                    </a>
+                </div>
+            </div>
         </div>
     </nav>
 

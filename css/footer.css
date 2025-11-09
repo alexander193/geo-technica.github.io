@@ -1,128 +1,68 @@
 /* ===== ПОДВАЛ (FOOTER) ===== */
 
 .footer {
-    background: #2b3d51;
-    width: 100%;
-    min-height: 150px;
-    display: flex;
-    align-items: flex-end;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    font-weight: bold;
+    background-color: #2b3d51;
+    color: #fff;
+    padding: 50px 0 20px 0;
+    margin-top: 60px;
 }
 
-.footer-row {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    position: relative;
-    box-sizing: border-box;
-}
-
-.footer-left {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 18px;
-}
-
-.footer-top {
-    background: #f4f6f9;
-    border: none;
-    border-radius: 50%;
-    box-shadow: 0 2px 7px rgba(37, 49, 63, 0.04);
-    padding: 0;
-    cursor: pointer;
-    width: 42px;
-    height: 42px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.footer-center {
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
-    align-items: center;
-    justify-items: center;
-    width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
 }
 
-.footer-mail {
+.footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
     color: #fff;
-    font-size: 22px;
-    margin-bottom: 13px;
 }
 
-.footer-label {
-    font-size: 15px;
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
     color: #fff;
-    opacity: 0.8;
-    margin-bottom: 2px;
 }
 
-.footer-phone a {
-    color: #fff;
-    font-size: 24px;
-    text-decoration: none;
-    letter-spacing: 2.5px;
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
 }
 
-.footer-right {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 22px;
+.footer-bottom p {
+    margin: 0;
 }
 
-.footer-social {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: none;
-    border: none;
-    box-shadow: none;
-    border-radius: 50%;
-    width: 44px;
-    height: 44px;
-    transition: background 0.18s;
-}
+/* ===== АДАПТИВНОСТЬ ===== */
 
-.footer-social:hover {
-    background: #f4f6f9;
-}
-
-@media (max-width: 900px) {
-    .footer-phone {
-        font-size: 18px;
-    }
-
-    .footer-row {
-        flex-direction: column;
-        align-items: center;
-        gap: 22px;
-        padding: 34px 18px;
-    }
-
-    .footer-center {
+@media (max-width: 768px) {
+    .footer-content {
         grid-template-columns: 1fr;
-        gap: 15px;
-        text-align: center;
+        gap: 30px;
     }
 
-    .footer-center img {
-        width: 150px;
-        height: 150px;
-    }
-
-    .footer-phone a {
-        font-size: 20px;
-        letter-spacing: 1px;
-    }
-
-    .footer-mail {
-        font-size: 18px;
+    .footer {
+        padding: 40px 0 15px 0;
+        margin-top: 40px;
     }
 }

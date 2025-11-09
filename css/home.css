@@ -1,4 +1,182 @@
-/* ===== ГЛАВНАЯ СТРАНИЦА (ВИДЕО СЕКЦИЯ) ===== */
+/* ===== ГЛАВНАЯ СТРАНИЦА ===== */
+
+/* ===== ПРЕИМУЩЕСТВА ===== */
+
+.advantages-section {
+    background: #f8f9fa;
+    padding: 60px 0;
+}
+
+.advantages-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.advantage-item {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.advantage-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.advantage-item h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #1e3a8a;
+}
+
+.advantage-item p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* ===== УСЛУГИ ===== */
+
+.services-section {
+    padding: 60px 0;
+}
+
+.services-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.service-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.service-card-header {
+    background: linear-gradient(135deg, #1e3a8a, #2b3d51);
+    color: #fff;
+    padding: 30px;
+    text-align: center;
+}
+
+.service-card-header h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.service-card-body {
+    padding: 30px;
+}
+
+.service-card-body p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* ===== УСЛУГИ ===== */
+
+.services-section {
+    padding: 60px 0;
+}
+
+.services-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.service-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.service-card-header {
+    background: linear-gradient(135deg, #1e3a8a, #2b3d51);
+    color: #fff;
+    padding: 30px;
+    text-align: center;
+}
+
+.service-card-header h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.service-card-body {
+    padding: 30px;
+}
+
+.service-card-body p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+
+@media (max-width: 768px) {
+    .advantages-section,
+    .services-section {
+        padding: 40px 0;
+    }
+
+    .advantages-grid,
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .advantage-item,
+    .service-card {
+        padding: 20px;
+    }
+}
+
+
+/* ===== ВИДЕО СЕКЦИЯ ===== */
 
 .hero-video-section {
     position: relative;
@@ -7,8 +185,9 @@
     overflow: hidden;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 60px;
+    justify-content: flex-start;
+    padding: 0;
+    margin: 0;
 }
 
 .hero-video-bg {
@@ -34,159 +213,49 @@
 .hero-left-content {
     position: relative;
     z-index: 3;
-    flex: 1;
+    padding-left: 60px;
     max-width: 600px;
-    animation: fadeInLeft 0.8s ease-out;
 }
 
 .hero-title {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    font-size: 52px;
+    font-size: 62px;
     font-weight: 700;
-    line-height: 1.3;
     color: white;
-    margin: 0;
+    margin: 0 0 15px 0;
     padding: 0;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-    letter-spacing: -0.5px;
+    line-height: 1.15;
 }
 
-.hero-right-content {
-    position: relative;
-    z-index: 3;
+.hero-subtitle {
+    font-size: 20px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0 0 30px 0;
+    padding: 0;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.laser-buttons {
     display: flex;
-    flex-direction: column;
     gap: 20px;
-    flex: 0 0 auto;
-    animation: fadeInRight 0.8s ease-out 0.2s backwards;
+    flex-wrap: wrap;
 }
 
-.hero-btn {
-    padding: 16px 48px;
-    font-size: 18px;
+.laser-buttons .btn {
+    padding: 12px 30px;
+    font-size: 15px;
     font-weight: 600;
-    border: none;
-    border-radius: 6px;
+    border: 2px solid #fff;
+    background: transparent;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
     cursor: pointer;
     transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    display: inline-block;
 }
 
-.hero-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-}
-
-.hero-btn:active {
-    transform: scale(0.98);
-}
-
-.hero-btn-primary {
-    background-color: #1e3a8a;
-    color: white;
-}
-
-.hero-btn-primary:hover {
-    background-color: #1e40af;
-    box-shadow: 0 8px 20px rgba(30, 58, 138, 0.4);
-}
-
-.hero-btn-secondary {
-    background-color: #f97316;
-    color: white;
-}
-
-.hero-btn-secondary:hover {
-    background-color: #ea580c;
-    box-shadow: 0 8px 20px rgba(249, 115, 22, 0.4);
-}
-
-/* Анимации */
-@keyframes fadeInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes fadeInRight {
-    from {
-        opacity: 0;
-        transform: translateX(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-/* Адаптивность */
-@media (max-width: 1024px) {
-    .hero-video-section {
-        padding: 0 40px;
-        gap: 40px;
-    }
-
-    .hero-title {
-        font-size: 42px;
-    }
-}
-
-@media (max-width: 768px) {
-    .hero-video-section {
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-end;
-        padding: 40px 20px 60px;
-        height: 70vh;
-    }
-
-    .hero-left-content {
-        width: 100%;
-        max-width: none;
-    }
-
-    .hero-title {
-        font-size: 32px;
-        line-height: 1.4;
-    }
-
-    .hero-right-content {
-        width: 100%;
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-
-    .hero-btn {
-        flex: 1;
-        min-width: 160px;
-        padding: 12px 20px;
-        font-size: 14px;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-video-section {
-        padding: 30px 15px 50px;
-    }
-
-    .hero-right-content {
-        width: 100%;
-        flex-direction: column;
-    }
-
-    .hero-btn {
-        width: 100%;
-    }
-
-    .hero-title {
-        font-size: 24px;
-    }
+.laser-buttons .btn:hover {
+    background: rgba(255, 255, 255, 0.15);
 }

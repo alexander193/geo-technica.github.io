@@ -595,3 +595,85 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         })();
+
+        // Определение активной страницы в меню
+document.addEventListener('DOMContentLoaded', function() {
+  const navLinks = document.querySelectorAll('.nav-link-item');
+  const navBurger = document.querySelector('.nav-burger');
+  const navLinksMenu = document.querySelector('.nav-links');
+  
+  // Определяем текущую страницу по URL
+  const currentPage = window.location.hash || '#home';
+  
+  navLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPage) {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
+    }
+  });
+  
+  // Бургер-меню
+  navBurger.addEventListener('click', function() {
+    navBurger.classList.toggle('active');
+    navLinksMenu.classList.toggle('active');
+  });
+  
+  // Закрытие меню при клике на ссылку
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      // Если ссылка уже активная - не кликаем
+      if (this.classList.contains('active')) {
+        e.preventDefault();
+        navBurger.classList.remove('active');
+        navLinksMenu.classList.remove('active');
+        return;
+      }
+      
+      // Убираем active со всех ссылок
+      navLinks.forEach(l => l.classList.remove('active'));
+      
+      // Добавляем active к текущей ссылке
+      this.classList.add('active');
+      
+      // Закрываем бургер-меню
+      navBurger.classList.remove('active');
+      navLinksMenu.classList.remove('active');
+    });
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const navLinks = document.querySelectorAll('.nav-link-item');
+  const navBurger = document.querySelector('.nav-burger');
+  const navLinksMenu = document.querySelector('.nav-links');
+  
+  const currentPage = window.location.hash || '#home';
+  
+  navLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPage) {
+      link.classList.add('active');
+    }
+  });
+  
+  navBurger.addEventListener('click', function() {
+    navBurger.classList.toggle('active');
+    navLinksMenu.classList.toggle('active');
+  });
+  
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      if (this.classList.contains('active')) {
+        e.preventDefault();
+        navBurger.classList.remove('active');
+        navLinksMenu.classList.remove('active');
+        return;
+      }
+      
+      navLinks.forEach(l => l.classList.remove('active'));
+      this.classList.add('active');
+      navBurger.classList.remove('active');
+      navLinksMenu.classList.remove('active');
+    });
+  });
+});

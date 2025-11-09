@@ -1,139 +1,91 @@
-/* ===== ОБЩИЕ КОМПОНЕНТЫ ===== */
+/* ===== КОМПОНЕНТЫ ===== */
 
-/* Кнопка "Наверх" */
-.scroll-top2 {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    width: 64px;
-    height: 64px;
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(4px);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #222c38;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    text-decoration: none;
-    transition: background 0.2s, transform 0.2s, opacity 0.3s ease;
-    z-index: 1000;
-    border: none;
-    cursor: pointer;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(20px);
-}
+/* ===== КНОПКИ ===== */
 
-.scroll-top2.show {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.scroll-top2:hover {
-    background: rgba(255, 255, 255, 1);
-    transform: translateY(-2px);
-}
-
-.scroll-top2 svg {
-    width: 36px;
-    height: 36px;
-}
-
-/* Кнопка "Домой" */
-.btn-home {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 64px;
-    height: 64px;
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(4px);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #222c38;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    text-decoration: none;
-    transition: background 0.2s, transform 0.2s;
-    z-index: 1000;
-}
-
-.btn-home svg {
-    width: 36px;
-    height: 36px;
-}
-
-.btn-home:hover {
-    background: rgba(255, 255, 255, 1);
-    transform: translateY(-2px);
-}
-
-/* Кнопка обратной связи */
-.btn-feedback {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 64px;
-    height: 64px;
-    background: rgba(52, 152, 219, 0.9);
-    backdrop-filter: blur(4px);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.btn-primary {
+    background-color: #1e3a8a;
     color: #fff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
+    padding: 12px 30px;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #1e2a5a;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #1e3a8a;
+    border: 2px solid #1e3a8a;
+    padding: 10px 28px;
+    border-radius: 4px;
+    font-weight: 600;
     transition: all 0.3s ease;
-    z-index: 1001;
 }
 
-.btn-feedback svg {
-    width: 32px;
-    height: 32px;
+.btn-secondary:hover {
+    background-color: #1e3a8a;
+    color: #fff;
 }
 
-.btn-feedback:hover {
-    background: rgba(52, 152, 219, 1);
-    transform: translateY(-2px) scale(1.1);
-    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+/* ===== КАРТОЧКИ ===== */
+
+.card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-/* Адаптивность */
+.card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+/* ===== КОНТЕЙНЕРЫ ===== */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ===== СЕКЦИИ ===== */
+
+.section {
+    padding: 60px 0;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-header h2 {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.section-header p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+
 @media (max-width: 768px) {
-    .btn-home,
-    .scroll-top2,
-    .btn-feedback {
-        width: 50px;
-        height: 50px;
-        bottom: 15px;
+    .section {
+        padding: 40px 0;
     }
 
-    .btn-home {
-        right: 15px;
+    .section-header h2 {
+        font-size: 28px;
     }
 
-    .scroll-top2 {
-        left: 15px;
-    }
-
-    .btn-feedback {
-        right: 75px;
-    }
-
-    .btn-home svg,
-    .scroll-top2 svg {
-        width: 28px;
-        height: 28px;
-    }
-
-    .btn-feedback svg {
-        width: 24px;
-        height: 24px;
+    .section-header p {
+        font-size: 14px;
     }
 }

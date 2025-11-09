@@ -1,0 +1,198 @@
+/* ===== ВИДЕО СЕКЦИЯ (HERO) ===== */
+
+.hero-video-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 60px;
+}
+
+/* ===== ВИДЕО ЭЛЕМЕНТ ===== */
+
+.hero-video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+/* ===== ЗАТЕМНЯЮЩИЙ ОВЕРЛЕЙ ===== */
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 2;
+}
+
+/* ===== ТЕКСТ И КНОПКИ СЛЕВА ===== */
+
+.hero-left-content {
+    position: relative;
+    z-index: 3;
+    flex: 1;
+    max-width: 700px;
+    animation: fadeInLeft 0.8s ease-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.hero-title {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 62px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: white;
+    margin: 0;
+    padding: 0;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    letter-spacing: -0.5px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+.hero-subtitle {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 15px 0 0 0;
+    padding: 0;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: 0.2px;
+}
+
+/* ===== КНОПКИ НА ВИДЕО ===== */
+
+.laser-buttons {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start;
+    width: auto;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.laser-buttons .btn {
+    padding: 12px 30px;
+    font-size: 15px;
+    font-weight: 600;
+    border: 2px solid #fff;
+    background: transparent;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.laser-buttons .btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.05);
+}
+
+.laser-buttons .btn-primary {
+    border-color: #fff;
+}
+
+.laser-buttons .btn-secondary {
+    border-color: #fff;
+}
+
+/* ===== АНИМАЦИЯ ===== */
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+
+@media (max-width: 1024px) {
+    .hero-video-section {
+        padding: 0 40px;
+    }
+
+    .hero-title {
+        font-size: 48px;
+    }
+
+    .hero-subtitle {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-video-section {
+        padding: 0 20px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hero-left-content {
+        max-width: 100%;
+        text-align: center;
+        align-items: center;
+    }
+
+    .hero-title {
+        font-size: 36px;
+    }
+
+    .hero-subtitle {
+        font-size: 16px;
+    }
+
+    .laser-buttons {
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-video-section {
+        padding: 0 15px;
+    }
+
+    .hero-title {
+        font-size: 28px;
+    }
+
+    .hero-subtitle {
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    .laser-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .laser-buttons .btn {
+        width: 100%;
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
