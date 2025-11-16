@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Геотехника</title>
     <style>
-        /* ===== ОБЪЕДИНЕННЫЙ CSS ===== */
-        
         /* ===== ОСНОВНЫЕ СТИЛИ ===== */
         * {
             box-sizing: border-box;
@@ -42,7 +41,12 @@
         }
 
         /* ===== ТЕКСТ ===== */
-        h1, h2, h3, h4, h5, h6 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             margin: 0;
             padding: 0;
             font-weight: 700;
@@ -69,7 +73,8 @@
         }
 
         /* ===== СПИСКИ ===== */
-        ul, ol {
+        ul,
+        ol {
             margin: 0;
             padding: 0;
             list-style: none;
@@ -114,9 +119,9 @@
         }
 
         .nav-bottom-row .nav-container {
-    display: flex;
-    justify-content: flex-end;
-}
+            display: flex;
+            justify-content: flex-end;
+        }
 
         /* Логотип - выравнивание по центру */
         .nav-logo-fullheight {
@@ -247,8 +252,13 @@
             background: rgba(255, 255, 255, 0.1);
         }
 
-        .social-link-bottom:hover {
+        .telegram:hover {
             background: #3b82f6;
+            transform: translateY(-1px);
+        }
+
+        .whatsapp:hover {
+            background: #25D366;
             transform: translateY(-1px);
         }
 
@@ -408,6 +418,7 @@
                 opacity: 0;
                 transform: translateX(-50px);
             }
+
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -548,7 +559,7 @@
             text-align: center;
         }
 
-        .form-content > p {
+        .form-content>p {
             font-size: 1.125rem;
             color: #cbd5e1;
             margin-bottom: 2rem;
@@ -605,10 +616,10 @@
             background: rgba(255, 255, 255, 0.08);
         }
 
-        .input-group input:focus + label,
-        .input-group textarea:focus + label,
-        .input-group input:valid + label,
-        .input-group textarea:valid + label {
+        .input-group input:focus+label,
+        .input-group textarea:focus+label,
+        .input-group input:valid+label,
+        .input-group textarea:valid+label {
             top: -0.5rem;
             left: 0.5rem;
             font-size: 0.875rem;
@@ -628,8 +639,8 @@
             transform: translateX(-50%);
         }
 
-        .input-group input:focus ~ .focus-border,
-        .input-group textarea:focus ~ .focus-border {
+        .input-group input:focus~.focus-border,
+        .input-group textarea:focus~.focus-border {
             width: 100%;
         }
 
@@ -707,12 +718,12 @@
             transition: all 0.3s ease;
         }
 
-        .checkbox-container input:checked + .checkmark {
+        .checkbox-container input:checked+.checkmark {
             background: #3b82f6;
             border-color: #3b82f6;
         }
 
-        .checkbox-container input:checked + .checkmark::after {
+        .checkbox-container input:checked+.checkmark::after {
             content: '✓';
             position: absolute;
             top: 50%;
@@ -1035,7 +1046,7 @@
             margin-bottom: 1rem;
         }
 
-        .about-text > .modern-header {
+        .about-text>.modern-header {
             text-align: left;
             margin-bottom: 3rem;
         }
@@ -1219,24 +1230,24 @@
                 padding: 0 30px;
                 gap: 30px;
             }
-            
+
             .nav-links {
                 gap: 35px;
             }
-            
+
             .contacts-bottom {
                 gap: 30px;
             }
-            
+
             .company-name-full {
                 font-size: 22px;
             }
-            
+
             .review-slide {
                 min-width: 50%;
                 flex: 0 0 50%;
             }
-            
+
             /* На средних экранах услуги 2 в ряд */
             .services-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -1251,16 +1262,16 @@
             .nav-links {
                 gap: 30px;
             }
-            
+
             .contacts-bottom {
                 gap: 25px;
             }
-            
+
             .form-wrapper {
                 grid-template-columns: 1fr;
                 gap: 3rem;
             }
-            
+
             .about-content-modern {
                 grid-template-columns: 1fr;
                 gap: 3rem;
@@ -1271,20 +1282,20 @@
             .nav-top-row {
                 height: 60px;
             }
-            
+
             .nav-bottom-row {
                 height: 45px;
             }
-            
+
             .nav-container {
                 padding: 0 20px;
                 gap: 20px;
             }
-            
+
             .nav-burger {
                 display: flex;
             }
-            
+
             .nav-links {
                 position: fixed;
                 top: 105px;
@@ -1301,43 +1312,43 @@
                 overflow: hidden;
                 border-top: 1px solid rgba(255, 255, 255, 0.1);
             }
-            
+
             .nav-links.active {
                 max-height: 400px;
                 padding: 20px 0;
             }
-            
+
             .nav-links li {
                 border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             }
-            
+
             .nav-link-item {
                 display: block;
                 padding: 15px 30px;
                 height: auto;
                 text-align: center;
             }
-            
+
             .nav-link-item::after {
                 display: none;
             }
-            
+
             .contacts-bottom {
                 flex-direction: column;
                 gap: 10px;
                 padding: 10px 0;
                 justify-content: center;
             }
-            
+
             .contact-items {
                 flex-direction: column;
                 gap: 8px;
             }
-            
+
             .company-name-full {
                 font-size: 20px;
             }
-            
+
             .hero-video-section {
                 padding: 0 40px;
             }
@@ -1355,34 +1366,35 @@
             .modern-header h2 {
                 font-size: 2rem;
             }
-            
+
             .services-grid {
-                grid-template-columns: 1fr; /* На мобильных 1 услуга в ряд */
+                grid-template-columns: 1fr;
+                /* На мобильных 1 услуга в ряд */
             }
-            
+
             .form-row {
                 grid-template-columns: 1fr;
             }
-            
+
             .projects-grid-modern {
                 grid-template-columns: 1fr;
             }
-            
+
             .review-content {
                 padding: 2rem 1.5rem;
             }
-            
+
             .review-header {
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 1rem;
             }
-            
+
             .review-slide {
                 min-width: 100%;
                 flex: 0 0 100%;
             }
-            
+
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 30px;
@@ -1391,7 +1403,7 @@
             .footer {
                 padding: 40px 0 15px 0;
             }
-            
+
             .hero-video-section {
                 padding: 0 20px;
                 justify-content: center;
@@ -1422,28 +1434,28 @@
             .nav-top-row {
                 height: 55px;
             }
-            
+
             .nav-bottom-row {
                 height: 40px;
             }
-            
+
             .nav-container {
                 padding: 0 15px;
             }
-            
+
             .nav-links {
                 top: 95px;
             }
-            
+
             .nav-link-item {
                 padding: 12px 20px;
                 font-size: 14px;
             }
-            
+
             .company-name-full {
                 font-size: 18px;
             }
-            
+
             .hero-video-section {
                 margin-top: 95px;
                 padding: 0 20px;
@@ -1454,26 +1466,26 @@
             .company-name-full {
                 font-size: 16px;
             }
-            
+
             .nav-burger {
                 width: 25px;
                 height: 25px;
             }
-            
+
             .contact-phone,
             .contact-email {
                 font-size: 12px;
             }
-            
+
             .social-link-bottom {
                 font-size: 11px;
             }
-            
+
             .social-link-bottom svg {
                 width: 14px;
                 height: 14px;
             }
-            
+
             .modern-services,
             .modern-contact-form,
             .modern-projects,
@@ -1481,15 +1493,15 @@
             .modern-about {
                 padding: 60px 0;
             }
-            
+
             .service-card-modern {
                 padding: 2rem 1.5rem;
             }
-            
+
             .director-card {
                 padding: 1.5rem;
             }
-            
+
             .hero-video-section {
                 padding: 0 15px;
             }
@@ -1556,16 +1568,22 @@
                     </div>
 
                     <div class="social-links-bottom">
-                        <a href="https://wa.me/74990000000" target="_blank" class="social-link-bottom" title="WhatsApp">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+                        <a href="https://wa.me/74990000000" target="_blank" class="social-link-bottom whatsapp"
+                            title="WhatsApp">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                viewBox="0 0 16 16">
+                                <path
+                                    d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" />
                             </svg>
                             <span>WhatsApp</span>
                         </a>
 
-                        <a href="https://t.me/yourusername" target="_blank" class="social-link-bottom" title="Telegram">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z"/>
+                        <a href="https://t.me/yourusername" target="_blank" class="social-link-bottom telegram"
+                            title="Telegram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                viewBox="0 0 16 16">
+                                <path
+                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z" />
                             </svg>
                             <span>Telegram</span>
                         </a>
@@ -1609,38 +1627,41 @@
                 <div class="service-card-modern">
                     <div class="service-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                            <path
+                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                         </svg>
                     </div>
                     <h3>Лазерное сканирование зданий</h3>
                     <a href="#" class="service-link">Подробнее →</a>
                 </div>
-                
+
                 <div class="service-card-modern">
                     <div class="service-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
-                            <polyline points="9 22 9 12 15 12 15 22"/>
+                            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+                            <polyline points="9 22 9 12 15 12 15 22" />
                         </svg>
                     </div>
                     <h3>Лазерное сканирование фасадов</h3>
                     <a href="#" class="service-link">Подробнее →</a>
                 </div>
-                
+
                 <div class="service-card-modern">
                     <div class="service-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                            <path
+                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                         </svg>
                     </div>
                     <h3>Лазерное сканирование промышленных помещений</h3>
                     <a href="#" class="service-link">Подробнее →</a>
                 </div>
-                
+
                 <div class="service-card-modern">
                     <div class="service-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                            <path
+                                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                         </svg>
                     </div>
                     <h3>Лазерное сканирование дизайна помещений</h3>
@@ -1650,74 +1671,29 @@
         </div>
     </section>
 
-    <!-- Форма обратной связи - современный дизайн (без правых блоков) -->
-    <section id="consultation" class="modern-contact-form">
-        <div class="container">
-            <div class="form-wrapper">
-                <div class="form-content">
-                    <h2>Получить консультацию</h2>
-                    <p>Оставьте заявку и наш специалист свяжется с вами в течение 15 минут</p>
-                    
-                    <form class="modern-form" id="consultation-form">
-                        <div class="form-row">
-                            <div class="input-group">
-                                <input type="text" id="name" name="name" required>
-                                <label for="name">Ваше имя</label>
-                                <span class="focus-border"></span>
-                                <div class="error-message" id="name-error">Заполните это поле</div>
-                            </div>
-                            <div class="input-group">
-                                <input type="tel" id="phone" name="phone" required>
-                                <label for="phone">Телефон</label>
-                                <span class="focus-border"></span>
-                                <div class="error-message" id="phone-error">Заполните это поле</div>
-                            </div>
-                        </div>
-                        
-                        <div class="input-group">
-                            <input type="email" id="email" name="email" required>
-                            <label for="email">Email</label>
-                            <span class="focus-border"></span>
-                            <div class="error-message" id="email-error">Заполните это поле</div>
-                        </div>
-                        
-                        <div class="input-group">
-                            <textarea rows="4" id="message" name="message" required></textarea>
-                            <label for="message">Сообщение</label>
-                            <span class="focus-border"></span>
-                            <div class="error-message" id="message-error">Заполните это поле</div>
-                        </div>
-                        
-                        <div class="file-upload-modern">
-                            <input type="file" id="file-upload-modern" class="file-input-hidden" multiple>
-                            <label for="file-upload-modern" class="file-label-modern">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
-                                </svg>
-                                <span>Прикрепить файлы</span>
-                            </label>
-                        </div>
-                        
-                        <div class="checkbox-modern">
-                            <label class="checkbox-container">
-                                <input type="checkbox" id="agreement" name="agreement" required>
-                                <span class="checkmark"></span>
-                                Согласен на обработку персональных данных
-                            </label>
-                            <div class="error-message" id="agreement-error">Необходимо ваше согласие</div>
-                        </div>
-                        
-                        <button type="submit" class="submit-btn-modern">
-                            <span>Отправить заявку</span>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M5 12h14M12 5l7 7-7 7"/>
-                            </svg>
-                        </button>
-                    </form>
-                </div>
+    <!-- ✅ ПРАВИЛЬНО -->
+<section id="consultation" class="modern-contact-form">
+    <div class="container">
+        <div class="form-wrapper">
+            <div class="form-content">
+                <h2>Свяжитесь с нами</h2>
+                <p>Оставьте ваши контактные данные</p>
             </div>
+            
+            <!-- БИТРИКС24 ВИДЖЕТ -->
+            <script data-b24-form="inline/1/ccrteh" data-skip-moving="true">
+                (function (w, d, u) {
+                    var s = d.createElement('script');
+                    s.async = true;
+                    s.src = u + '?' + (Date.now() / 180000 | 0);
+                    var h = d.getElementsByTagName('script')[0];
+                    h.parentNode.insertBefore(s, h);
+                })(window, document, 'https://cdn-ru.bitrix24.ru/b32842348/crm/form/loader_1.js');
+            </script>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- Наши проекты - современный дизайн -->
     <section id="portfolio" class="modern-projects">
@@ -1726,7 +1702,7 @@
                 <h2>Наши проекты</h2>
                 <p>Реализованные решения для ведущих компаний</p>
             </div>
-            
+
             <div class="projects-grid-modern">
                 <div class="project-card-modern">
                     <div class="project-image">
@@ -1738,7 +1714,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="project-card-modern">
                     <div class="project-image">
                         <img src="images/main/fasad.jpg" alt="Проект 2">
@@ -1749,7 +1725,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="project-card-modern">
                     <div class="project-image">
                         <img src="images/main/fasad.jpg" alt="Проект 3">
@@ -1760,7 +1736,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="project-card-modern">
                     <div class="project-image">
                         <img src="images/main/fasad.jpg" alt="Проект 4">
@@ -1771,7 +1747,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="project-card-modern">
                     <div class="project-image">
                         <img src="images/main/fasad.jpg" alt="Проект 5">
@@ -1782,7 +1758,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="project-card-modern">
                     <div class="project-image">
                         <img src="images/main/fasad.jpg" alt="Проект 6">
@@ -1794,12 +1770,12 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="projects-cta">
                 <a href="#all-projects" class="cta-button">
                     <span>Посмотреть все проекты</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        <path d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                 </a>
             </div>
@@ -1813,7 +1789,7 @@
                 <h2>Отзывы заказчиков</h2>
                 <p>Что говорят наши клиенты о сотрудничестве</p>
             </div>
-            
+
             <div class="reviews-slider-modern">
                 <div class="slider-container-modern">
                     <div class="slider-track-modern">
@@ -1884,17 +1860,17 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="slider-controls">
                     <button class="slider-btn prev-btn">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M15 18l-6-6 6-6"/>
+                            <path d="M15 18l-6-6 6-6" />
                         </svg>
                     </button>
                     <div class="slider-dots"></div>
                     <button class="slider-btn next-btn">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M9 18l6-6-6-6"/>
+                            <path d="M9 18l6-6-6-6" />
                         </svg>
                     </button>
                 </div>
@@ -1907,7 +1883,7 @@
         <div class="container">
             <div class="about-content-modern">
                 <div class="about-text">
-                    
+
                     <div class="mission-section">
                         <h3>Наша миссия</h3>
                         <p>Качество</p>
@@ -1915,7 +1891,7 @@
                         <p>"Под ключ"</p>
                     </div>
                 </div>
-                
+
                 <div class="about-director-modern">
                     <div class="director-card">
                         <div class="director-image">
@@ -1926,8 +1902,8 @@
                             <p class="director-position">Генеральный директор</p>
                             <!-- <p class="director-bio">Специалист в области геодезии и картографии с 15-летним опытом работы. Руководитель проектов по лазерному сканированию и 3D-моделированию.</p> -->
                             <!-- <div class="director-contacts"> -->
-                                <!-- <a href="mailto:ivanov@geotech.ru">ivanov@geotech.ru</a> -->
-                                <!-- <a href="tel:+74991234567">+7 (499) 123-45-67</a> -->
+                            <!-- <a href="mailto:ivanov@geotech.ru">ivanov@geotech.ru</a> -->
+                            <!-- <a href="tel:+74991234567">+7 (499) 123-45-67</a> -->
                             <!-- </div> -->
                         </div>
                     </div>
@@ -1942,7 +1918,7 @@
             <div class="footer-logo">
                 <img src="images/lazernoe-skanirovanie/logo.png" alt="Геотехника" class="footer-logo-img">
             </div>
-            
+
             <div class="footer-section">
                 <h3>Услуги</h3>
                 <ul>
@@ -1952,7 +1928,7 @@
                     <li><a href="#">Лазерное сканирование дизайна интерьеров</a></li>
                 </ul>
             </div>
-            
+
             <div class="footer-section">
                 <h3>Контакты</h3>
                 <ul>
@@ -1970,38 +1946,38 @@
 
     <script>
         // ===== БУРГЕР-МЕНЮ =====
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const navBurger = document.querySelector('.nav-burger');
             const navLinks = document.querySelector('.nav-links');
-            
+
             if (!navBurger || !navLinks) return;
-            
-            navBurger.addEventListener('click', function() {
+
+            navBurger.addEventListener('click', function () {
                 navBurger.classList.toggle('active');
                 navLinks.classList.toggle('active');
                 document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
             });
-            
+
             // Закрытие меню при клике на ссылку
             document.querySelectorAll('.nav-link-item').forEach(link => {
-                link.addEventListener('click', function() {
+                link.addEventListener('click', function () {
                     navBurger.classList.remove('active');
                     navLinks.classList.remove('active');
                     document.body.style.overflow = '';
                 });
             });
-            
+
             // Закрытие меню при клике вне его
-            document.addEventListener('click', function(e) {
+            document.addEventListener('click', function (e) {
                 if (!e.target.closest('.nav-container') && !e.target.closest('.nav-burger')) {
                     navBurger.classList.remove('active');
                     navLinks.classList.remove('active');
                     document.body.style.overflow = '';
                 }
             });
-            
+
             // Закрытие меню при изменении размера окна
-            window.addEventListener('resize', function() {
+            window.addEventListener('resize', function () {
                 if (window.innerWidth > 900) {
                     navBurger.classList.remove('active');
                     navLinks.classList.remove('active');
@@ -2011,19 +1987,19 @@
         });
 
         // ===== СЛАЙДЕР ОТЗЫВОВ =====
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const track = document.querySelector('.slider-track-modern');
             const slides = document.querySelectorAll('.review-slide');
             const prevBtn = document.querySelector('.prev-btn');
             const nextBtn = document.querySelector('.next-btn');
             const dotsContainer = document.querySelector('.slider-dots');
-            
+
             if (!track || !slides.length) return;
-            
+
             let currentSlide = 0;
             const slidesPerView = getSlidesPerView();
             const totalSlides = slides.length;
-            
+
             // Создаем точки для навигации
             for (let i = 0; i < Math.ceil(totalSlides / slidesPerView); i++) {
                 const dot = document.createElement('div');
@@ -2032,32 +2008,32 @@
                 dot.addEventListener('click', () => goToSlide(i * slidesPerView));
                 dotsContainer.appendChild(dot);
             }
-            
+
             const dots = document.querySelectorAll('.dot');
-            
+
             function getSlidesPerView() {
                 if (window.innerWidth >= 1024) return 3;
                 if (window.innerWidth >= 768) return 2;
                 return 1;
             }
-            
+
             function updateSlider() {
                 const slideWidth = slides[0].offsetWidth;
                 track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
-                
+
                 // Обновляем активную точку
                 const activeDotIndex = Math.floor(currentSlide / slidesPerView);
                 dots.forEach((dot, index) => {
                     dot.classList.toggle('active', index === activeDotIndex);
                 });
             }
-            
+
             function goToSlide(slideIndex) {
                 const maxSlide = Math.max(0, slides.length - slidesPerView);
                 currentSlide = Math.max(0, Math.min(slideIndex, maxSlide));
                 updateSlider();
             }
-            
+
             function nextSlide() {
                 const maxSlide = Math.max(0, slides.length - slidesPerView);
                 if (currentSlide < maxSlide) {
@@ -2067,7 +2043,7 @@
                 }
                 updateSlider();
             }
-            
+
             function prevSlide() {
                 const maxSlide = Math.max(0, slides.length - slidesPerView);
                 if (currentSlide > 0) {
@@ -2077,33 +2053,33 @@
                 }
                 updateSlider();
             }
-            
+
             // Обработчики событий
             prevBtn.addEventListener('click', prevSlide);
             nextBtn.addEventListener('click', nextSlide);
-            
+
             // Адаптивность при изменении размера окна
-            window.addEventListener('resize', function() {
+            window.addEventListener('resize', function () {
                 const newSlidesPerView = getSlidesPerView();
                 currentSlide = 0;
                 updateSlider();
             });
-            
+
             // Автопрокрутка
             let autoSlide = setInterval(nextSlide, 5000);
-            
+
             // Останавливаем автопрокрутку при наведении
             track.addEventListener('mouseenter', () => clearInterval(autoSlide));
             track.addEventListener('mouseleave', () => {
                 autoSlide = setInterval(nextSlide, 5000);
             });
-            
+
             // Инициализация
             updateSlider();
         });
 
         // ===== ПЛАВНАЯ ПРОКРУТКА =====
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             function smoothScrollTo(target) {
                 const element = document.querySelector(target);
                 if (element) {
@@ -2117,7 +2093,7 @@
 
             // Обработка кликов по ссылкам с якорями
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
+                anchor.addEventListener('click', function (e) {
                     e.preventDefault();
                     const targetId = this.getAttribute('href');
                     if (targetId && targetId !== '#') {
@@ -2128,40 +2104,40 @@
         });
 
         // ===== ВАЛИДАЦИЯ ФОРМЫ =====
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const form = document.getElementById('consultation-form');
             if (!form) return;
-            
+
             const inputs = form.querySelectorAll('input[required], textarea[required]');
-            
+
             inputs.forEach(input => {
                 // Обработка ввода данных
-                input.addEventListener('input', function() {
+                input.addEventListener('input', function () {
                     if (this.value.trim() !== '') {
                         this.classList.remove('input-error');
                         const errorElement = document.getElementById(this.id + '-error');
                         if (errorElement) errorElement.style.display = 'none';
                     }
                 });
-                
+
                 // Обработка потери фокуса
-                input.addEventListener('blur', function() {
+                input.addEventListener('blur', function () {
                     validateField(this);
                 });
             });
-            
+
             // Обработка отправки формы
-            form.addEventListener('submit', function(e) {
+            form.addEventListener('submit', function (e) {
                 e.preventDefault();
-                
+
                 let isValid = true;
-                
+
                 inputs.forEach(input => {
                     if (!validateField(input)) {
                         isValid = false;
                     }
                 });
-                
+
                 // Проверка чекбокса
                 const agreement = document.getElementById('agreement');
                 const agreementError = document.getElementById('agreement-error');
@@ -2171,17 +2147,17 @@
                 } else {
                     agreementError.style.display = 'none';
                 }
-                
+
                 if (isValid) {
                     // Здесь можно отправить форму
                     alert('Форма успешно отправлена!');
                     form.reset();
                 }
             });
-            
+
             function validateField(field) {
                 const errorElement = document.getElementById(field.id + '-error');
-                
+
                 if (field.value.trim() === '') {
                     field.classList.add('input-error');
                     if (errorElement) errorElement.style.display = 'block';
@@ -2195,4 +2171,5 @@
         });
     </script>
 </body>
+
 </html>
