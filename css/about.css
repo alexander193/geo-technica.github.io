@@ -738,135 +738,208 @@ select.form-control {
 }
 
 /* END PERPLEXITY DESIGN SYSTEM */
-```css
 /* ============================
-   ПОДВАЛ / FOOTER
+   О КОМПАНИИ
    ============================ */
 
-.footer {
-  background-color: var(--color-surface);
+.modern-about {
+  padding: var(--space-32) 0 var(--space-32) 0;
+  background: linear-gradient(
+    135deg,
+    var(--color-surface) 0%,
+    var(--color-background) 100%
+  );
   color: var(--color-text);
-  padding: var(--space-32) 0 var(--space-20) 0;
-  margin-top: 0;
-  border-top: 1px solid var(--color-border);
 }
 
-.footer-content {
-  max-width: var(--container-xl);
-  margin: 0 auto;
-  padding: 0 var(--space-20);
+.modern-about .modern-header h2 {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-primary-hover) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.modern-about .modern-header p {
+  color: var(--color-text-secondary);
+}
+
+.about-content-modern {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: var(--space-32);
-  margin-bottom: var(--space-32);
-  margin-top: var(--space-32);
   align-items: start;
 }
 
-.footer-logo {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.footer-logo-img {
-  width: 180px;
-}
-
-.footer-logo-text {
-  font-size: var(--font-size-xl);
+.about-text h2 {
+  font-size: var(--font-size-4xl);
   font-weight: var(--font-weight-bold);
-  color: var(--color-text);
-}
-
-.footer-section h3 {
-  font-size: var(--font-size-xl);
-  margin-bottom: var(--space-20);
-  color: var(--color-text);
-  border-bottom: 2px solid var(--color-primary);
-  padding-bottom: var(--space-10);
-  display: inline-block;
-  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-16);
+  line-height: var(--line-height-tight);
   letter-spacing: var(--letter-spacing-tight);
 }
 
-.footer-section ul {
-  list-style: none;
-  padding: 0;
+.about-text .modern-header {
+  text-align: left;
+  margin-bottom: var(--space-32);
 }
 
-.footer-section ul li {
-  margin-bottom: var(--space-10);
+.mission-section h3 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-16);
+  color: var(--color-text);
+  line-height: var(--line-height-tight);
 }
 
-.footer-section ul li a {
+.mission-section p {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-normal);
   color: var(--color-text-secondary);
+  margin-bottom: var(--space-24);
+}
+
+.about-director-modern {
+  position: sticky;
+  top: var(--space-24);
+}
+
+.director-card {
+  background: var(--color-surface);
+  padding: var(--space-24);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+  border: 1px solid var(--color-card-border);
+  transition: box-shadow var(--duration-normal) var(--ease-standard);
+}
+
+.director-card:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.director-image {
+  width: 200px;
+  height: 200px;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin: 0 auto var(--space-16);
+  border: 4px solid var(--color-primary);
+}
+
+.director-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.director-info h4 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-8);
+  color: var(--color-text);
+  line-height: var(--line-height-tight);
+}
+
+.director-position {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-16);
+  font-size: var(--font-size-base);
+}
+
+.director-bio {
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--space-16);
+  font-size: var(--font-size-base);
+}
+
+.director-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.director-contacts a {
+  color: var(--color-primary);
+  text-decoration: none;
   transition: color var(--duration-normal) var(--ease-standard);
   font-size: var(--font-size-base);
 }
 
-.footer-section ul li a:hover {
-  color: var(--color-primary);
+.director-contacts a:hover {
+  color: var(--color-primary-hover);
 }
 
-.footer-bottom {
-  border-top: 1px solid var(--color-border);
-  padding-top: var(--space-20);
-  padding-bottom: var(--space-20);
-  text-align: center;
-  color: var(--color-text-secondary);
-  font-size: var(--font-size-sm);
+.director-contacts a:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: var(--space-2);
+  border-radius: var(--radius-sm);
 }
 
-.footer-bottom p {
-  margin: 0;
-}
-
-/* Responsive styles for mobile portrait (480px) */
+/* Responsive Design - Mobile Portrait */
 @media (max-width: 480px) {
-  .footer {
-    padding: var(--space-24) 0 var(--space-16) 0;
+  .modern-about {
+    padding: var(--space-24) 0;
   }
 
-  .footer-content {
-    padding: 0 var(--space-16);
+  .about-content-modern {
     grid-template-columns: 1fr;
     gap: var(--space-24);
+  }
+
+  .about-text h2 {
+    font-size: var(--font-size-3xl);
+  }
+
+  .about-text .modern-header {
     margin-bottom: var(--space-24);
-    margin-top: var(--space-24);
   }
 
-  .footer-logo {
-    align-items: center;
-    text-align: center;
+  .mission-section h3 {
+    font-size: var(--font-size-xl);
   }
 
-  .footer-logo-img {
-    width: 140px;
-  }
-
-  .footer-logo-text {
-    font-size: var(--font-size-lg);
-  }
-
-  .footer-section {
-    text-align: center;
-  }
-
-  .footer-section h3 {
-    font-size: var(--font-size-lg);
+  .mission-section p {
+    font-size: var(--font-size-base);
     margin-bottom: var(--space-16);
-    padding-bottom: var(--space-8);
-    width: 100%;
   }
 
-  .footer-section ul li {
-    margin-bottom: var(--space-8);
+  .about-director-modern {
+    position: relative;
+    top: 0;
   }
 
-  .footer-bottom {
-    padding-top: var(--space-16);
-    font-size: var(--font-size-xs);
+  .director-card {
+    padding: var(--space-16);
+  }
+
+  .director-image {
+    width: 150px;
+    height: 150px;
+    margin-bottom: var(--space-12);
+    border-width: 3px;
+  }
+
+  .director-info h4 {
+    font-size: var(--font-size-lg);
+  }
+
+  .director-position {
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-12);
+  }
+
+  .director-bio {
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-12);
+  }
+
+  .director-contacts a {
+    font-size: var(--font-size-sm);
   }
 }
-```

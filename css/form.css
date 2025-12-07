@@ -740,133 +740,366 @@ select.form-control {
 /* END PERPLEXITY DESIGN SYSTEM */
 ```css
 /* ============================
-   ПОДВАЛ / FOOTER
+   ФОРМА КОНСУЛЬТАЦИИ
    ============================ */
 
-.footer {
-  background-color: var(--color-surface);
+.modern-contact-form {
+  padding: var(--space-32) 0;
+  background: linear-gradient(
+    135deg,
+    var(--color-charcoal-700) 0%,
+    var(--color-slate-500) 100%
+  );
   color: var(--color-text);
-  padding: var(--space-32) 0 var(--space-20) 0;
-  margin-top: 0;
-  border-top: 1px solid var(--color-border);
 }
 
-.footer-content {
-  max-width: var(--container-xl);
-  margin: 0 auto;
-  padding: 0 var(--space-20);
+.form-wrapper {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 1fr;
   gap: var(--space-32);
-  margin-bottom: var(--space-32);
-  margin-top: var(--space-32);
-  align-items: start;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 var(--space-16);
 }
 
-.footer-logo {
+.form-content h2 {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-16);
+  text-align: center;
+  color: var(--color-gray-200);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-tight);
+}
+
+.form-content p {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-24);
+  text-align: center;
+  line-height: var(--line-height-normal);
+}
+
+.modern-form {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  gap: var(--space-20);
 }
 
-.footer-logo-img {
-  width: 180px;
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-20);
 }
 
-.footer-logo-text {
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-bold);
+.input-group {
+  position: relative;
+  margin-bottom: 0;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  padding: var(--space-16);
+  background: var(--color-secondary);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
   color: var(--color-text);
-}
-
-.footer-section h3 {
-  font-size: var(--font-size-xl);
-  margin-bottom: var(--space-20);
-  color: var(--color-text);
-  border-bottom: 2px solid var(--color-primary);
-  padding-bottom: var(--space-10);
-  display: inline-block;
-  font-weight: var(--font-weight-semibold);
-  letter-spacing: var(--letter-spacing-tight);
-}
-
-.footer-section ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-section ul li {
-  margin-bottom: var(--space-10);
-}
-
-.footer-section ul li a {
-  color: var(--color-text-secondary);
-  transition: color var(--duration-normal) var(--ease-standard);
   font-size: var(--font-size-base);
+  font-family: var(--font-family-base);
+  line-height: var(--line-height-normal);
+  transition: all var(--duration-normal) var(--ease-standard);
 }
 
-.footer-section ul li a:hover {
+.input-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.input-group label {
+  position: absolute;
+  top: var(--space-16);
+  left: var(--space-16);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base);
+  transition: all var(--duration-normal) var(--ease-standard);
+  pointer-events: none;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+  outline: var(--focus-outline);
+  border-color: var(--color-primary);
+  background: var(--color-secondary-hover);
+  box-shadow: var(--focus-ring);
+}
+
+.input-group input:focus ~ label,
+.input-group textarea:focus ~ label,
+.input-group input.valid ~ label,
+.input-group textarea.valid ~ label {
+  top: calc(var(--space-8) * -1);
+  left: var(--space-8);
+  font-size: var(--font-size-sm);
+  background: var(--color-charcoal-700);
+  padding: 0 var(--space-8);
   color: var(--color-primary);
+  font-weight: var(--font-weight-medium);
 }
 
-.footer-bottom {
-  border-top: 1px solid var(--color-border);
-  padding-top: var(--space-20);
-  padding-bottom: var(--space-20);
+.focus-border {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  transition: all var(--duration-normal) var(--ease-standard);
+  transform: translateX(-50%);
+}
+
+.input-group input:focus .focus-border,
+.input-group textarea:focus .focus-border {
+  width: 100%;
+}
+
+.file-upload-modern {
+  margin: var(--space-8) 0;
+}
+
+.file-label-modern {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-12);
+  padding: var(--space-20) var(--space-16);
+  background: var(--color-secondary);
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius-base);
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-standard);
   text-align: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.file-input-hidden {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+.file-label-modern:hover {
+  border-color: var(--color-primary);
+  background: var(--color-secondary-hover);
+}
+
+.file-label-modern svg {
+  width: 24px;
+  height: 24px;
+  color: var(--color-text-secondary);
+}
+
+.file-label-modern span {
   color: var(--color-text-secondary);
   font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
 }
 
-.footer-bottom p {
-  margin: 0;
+.checkbox-modern {
+  margin: var(--space-8) 0;
 }
 
-/* Responsive styles for mobile portrait (480px) */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-normal);
+}
+
+.checkbox-container input {
+  display: none;
+}
+
+.checkmark {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  position: relative;
+  transition: all var(--duration-normal) var(--ease-standard);
+  flex-shrink: 0;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.checkbox-container input:checked ~ .checkmark::after {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--color-btn-primary-text);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+}
+
+.submit-btn-modern {
+  background: var(--color-primary);
+  color: var(--color-btn-primary-text);
+  border: none;
+  padding: var(--space-16) var(--space-24);
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  font-family: var(--font-family-base);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-12);
+  transition: all var(--duration-normal) var(--ease-standard);
+  margin-top: var(--space-8);
+  box-shadow: var(--shadow-sm);
+}
+
+.submit-btn-modern:hover {
+  background: var(--color-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.submit-btn-modern:active {
+  background: var(--color-primary-active);
+  transform: translateY(0);
+}
+
+.submit-btn-modern:focus-visible {
+  outline: var(--focus-outline);
+  box-shadow: var(--focus-ring);
+}
+
+.submit-btn-modern svg {
+  width: 20px;
+  height: 20px;
+}
+
+.error-message {
+  color: var(--color-error);
+  font-size: var(--font-size-sm);
+  margin-top: var(--space-8);
+  display: none;
+  font-weight: var(--font-weight-medium);
+}
+
+.input-error {
+  border-color: var(--color-error) !important;
+}
+
+.input-error:focus {
+  border-color: var(--color-error) !important;
+  box-shadow: 0 0 0 3px rgba(var(--color-error-rgb), 0.2) !important;
+}
+
+/* Mobile Responsive Styles */
 @media (max-width: 480px) {
-  .footer {
-    padding: var(--space-24) 0 var(--space-16) 0;
+  .modern-contact-form {
+    padding: var(--space-24) 0;
   }
 
-  .footer-content {
-    padding: 0 var(--space-16);
-    grid-template-columns: 1fr;
+  .form-wrapper {
     gap: var(--space-24);
-    margin-bottom: var(--space-24);
-    margin-top: var(--space-24);
+    padding: 0 var(--space-12);
   }
 
-  .footer-logo {
-    align-items: center;
-    text-align: center;
+  .form-content h2 {
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--space-12);
   }
 
-  .footer-logo-img {
-    width: 140px;
-  }
-
-  .footer-logo-text {
-    font-size: var(--font-size-lg);
-  }
-
-  .footer-section {
-    text-align: center;
-  }
-
-  .footer-section h3 {
-    font-size: var(--font-size-lg);
+  .form-content p {
+    font-size: var(--font-size-base);
     margin-bottom: var(--space-16);
-    padding-bottom: var(--space-8);
-    width: 100%;
   }
 
-  .footer-section ul li {
-    margin-bottom: var(--space-8);
+  .modern-form {
+    gap: var(--space-16);
   }
 
-  .footer-bottom {
-    padding-top: var(--space-16);
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-16);
+  }
+
+  .input-group input,
+  .input-group textarea {
+    padding: var(--space-12);
+    font-size: var(--font-size-sm);
+  }
+
+  .input-group label {
+    top: var(--space-12);
+    left: var(--space-12);
+    font-size: var(--font-size-sm);
+  }
+
+  .input-group input:focus ~ label,
+  .input-group textarea:focus ~ label,
+  .input-group input.valid ~ label,
+  .input-group textarea.valid ~ label {
+    top: calc(var(--space-6) * -1);
+    left: var(--space-6);
     font-size: var(--font-size-xs);
+    padding: 0 var(--space-6);
+  }
+
+  .input-group textarea {
+    min-height: 100px;
+  }
+
+  .file-label-modern {
+    padding: var(--space-16) var(--space-12);
+    gap: var(--space-8);
+  }
+
+  .file-label-modern svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .file-label-modern span {
+    font-size: var(--font-size-xs);
+  }
+
+  .checkbox-container {
+    gap: var(--space-8);
+    font-size: var(--font-size-xs);
+  }
+
+  .checkmark {
+    width: 18px;
+    height: 18px;
+  }
+
+  .submit-btn-modern {
+    padding: var(--space-12) var(--space-20);
+    font-size: var(--font-size-base);
+    gap: var(--space-8);
+  }
+
+  .submit-btn-modern svg {
+    width: 18px;
+    height: 18px;
   }
 }
 ```
